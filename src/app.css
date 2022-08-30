@@ -1,0 +1,42 @@
+:root {
+	font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --white: #ffffff;
+    --gray-50: #ECEFF1;
+    --gray-100: #CFD8DC;
+    --gray-200: #B0BEC5;
+    --gray-300: #90A4AE;
+    --gray-400: #78909C;
+    --gray-500: #607D8B;
+    --gray-600: #546E7A;
+    --gray-700: #455A64;
+    --gray-800: #37474F;
+    --gray-900: #263238;
+    --blue-50: #E3F2FD;
+    --blue-100: #BBDEFB;
+    --blue-200: #90CAF9;
+    --blue-300: #64B5F6;
+    --blue-400: #42A5F5;
+    --blue-500: #2196F3;
+    --blue-600: #1E88E5;
+    --blue-700: #1976D2;
+    --blue-800: #1565C0;
+    --blue-900: #0D47A1;
+}
+body {
+	min-height: 100vh;
+	margin: 0;
+    font-size: 1rem;
+}
+
+button {
+    height: 40px;
+    line-height: 38px;
+    background-color: var(--blue-700);
+    color: var(--white);
+    border: 1px solid var(--blue-700);
+    padding: 0 1rem;
+    cursor: pointer;
+    font-size: 0.875rem;
+    border-radius: 4px;
+}
