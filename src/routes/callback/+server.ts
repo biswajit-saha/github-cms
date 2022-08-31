@@ -33,7 +33,7 @@ export const GET: RequestHandler = async function (request) {
 		status: 302,
 		headers: {
 			Location: '/',
-			'set-cookie': cookie.serialize('token', `abcd_${request.locals.token}`, {
+			'set-cookie': cookie.serialize('token', request.locals.token, {
 				path: '/',
 				httpOnly: true
 			})
