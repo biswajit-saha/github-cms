@@ -1,9 +1,22 @@
+<script>
+	/** @type {import('./$types').PageData} */
+	export let data;
+
+	$: console.log(data);
+</script>
+
 <div class="wrapper">
 	<div class="container">
 		<h1>Welcome to Git CMS</h1>
-		<a href="/login">
-			<button>Login Using Github</button>
-		</a>
+		{#if data.authenticated}
+			<a href="/logout">
+				<button>Logout</button>
+			</a>
+		{:else}
+			<a href="/login">
+				<button>Login Using Github</button>
+			</a>
+		{/if}
 	</div>
 </div>
 
@@ -13,11 +26,9 @@
 		align-items: center;
 		justify-content: center;
 		height: 100vh;
-
 	}
 	.container {
 		max-width: 700px;
 		text-align: center;
 	}
 </style>
-

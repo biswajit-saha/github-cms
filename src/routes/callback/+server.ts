@@ -27,16 +27,16 @@ export const GET: RequestHandler = async function (request) {
 		.then((res) => res.json())
 		.then((r) => r.access_token);
 
-	request.locals.token = token
-	
+	request.locals.token = token;
+
 	return new Response('Redirect', {
 		status: 302,
 		headers: {
 			Location: '/',
-			'set-cookie': cookie.serialize('token', 'aaa'+request.locals.token, {
+			'set-cookie': cookie.serialize('token', 'aaa' + request.locals.token, {
 				path: '/',
 				httpOnly: true,
-				expires: new Date(Date.now())
+				expires: new Date(Date.now() + 24 * 60 * 60)
 			})
 		}
 	});

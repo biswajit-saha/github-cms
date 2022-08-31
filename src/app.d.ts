@@ -3,10 +3,10 @@
 // and what to do when importing types
 declare namespace App {
 	interface Locals {
-		token: string
-		user: string
+		token: string;
+		user: string;
 	}
-	
+
 	// interface PageData {}
 	// interface Platform {}
 	// interface PrivateEnv {}
