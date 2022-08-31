@@ -1,5 +1,5 @@
-import { json } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import * as cookie from 'cookie';
 
 const tokenUrl = 'https://github.com/login/oauth/access_token';
 const clientId = import.meta.env.VITE_CLIENT_ID;
@@ -27,28 +27,16 @@ export const GET: RequestHandler = async function (request) {
 		.then((res) => res.json())
 		.then((r) => r.access_token);
 
-	console.log(token);
-
-	const access_token = token;
-
-	// get user data
-
-	const user = await fetch('https://api.github.com/user', {
-		headers: {
-			Accept: 'application/vnd.github+json',
-			Authorization: `bearer ${token}`
-		}
-	}).then((res) => res.json());
-
-	// request.locals.user = user.login
-
-	// return Response.redirect(request.url.origin, 302)
+	request.locals.token = token
+	
 	return new Response('Redirect', {
 		status: 302,
 		headers: {
 			Location: '/',
-			'set-cookie': `token=${token}; SameSite=Strict;`
+			'set-cookie': cookie.serialize('token', `abcd_${request.locals.token}`, {
+				path: '/',
+				httpOnly: true
+			})
 		}
 	});
-	// return json(user)
 };
