@@ -89,7 +89,7 @@
     margin: 0 auto;
     display: grid;
     grid-template-columns: 3fr 1fr;
-    column-gap: 40px;
+    column-gap: 2rem;
 }
 .page-header-wrap {
     grid-column: auto / span 2;
