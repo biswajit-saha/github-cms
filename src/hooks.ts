@@ -11,7 +11,8 @@ export const handle: Handle = async ({event, resolve}) => {
 
     response.headers.set('set-cookie', cookie.serialize('token', event.locals.token, {
         path: '/',
-        httpOnly: true
+        httpOnly: true,
+        expires: new Date(Date.now() + 24*60*60*365)
     }))
 
     return response;
