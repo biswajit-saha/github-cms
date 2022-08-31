@@ -4,11 +4,12 @@ import type { RequestHandler } from './$types';
 const target = 'https://github.com/login/oauth/authorize';
 const clientId = import.meta.env.VITE_CLIENT_ID;
 
-export const GET: RequestHandler = ({ request, locals }) => {
-	// console.log(request);
+export const GET: RequestHandler = ({ locals }) => {
+	
 	if (locals.token) {
 		throw redirect(302, '/');
 	}
+
 	const sessionId = crypto.randomUUID();
 	return new Response('Redirect', {
 		status: 302,

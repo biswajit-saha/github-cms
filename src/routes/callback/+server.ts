@@ -5,8 +5,6 @@ const tokenUrl = 'https://github.com/login/oauth/access_token';
 const clientId = import.meta.env.VITE_CLIENT_ID;
 const secret = import.meta.env.VITE_CLIENT_SECRET;
 
-// console.log(clientId, secret)
-
 export const GET: RequestHandler = async function (request) {
 	// get code from the url
 	const code = request.url.searchParams.get('code');
