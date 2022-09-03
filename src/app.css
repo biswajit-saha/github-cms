@@ -37,6 +37,19 @@ body {
 	background-color: var(--body-bg);
 }
 
+.btn {
+	@apply inline-flex font-medium leading-8 p-2 px-6  rounded-lg bg-gray-900 text-white;
+}
+.btn-full {
+	@apply block;
+}
+.btn-blue {
+	@apply bg-blue-500 text-white;
+}
+.btn-blue:hover {
+	@apply bg-blue-700;
+}
+
 button {
 	height: 40px;
 	line-height: 38px;
@@ -48,7 +61,12 @@ button {
 	font-size: 0.875rem;
 	border-radius: 4px;
 }
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
 	font-weight: 500;
 	color: var(--gray-900);
 }
