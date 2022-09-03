@@ -7,7 +7,7 @@ const ghAuthURL = 'https://github.com/login/oauth/authorize';
 const clientId = CLIENT_ID;
 
 export const GET: RequestHandler = ({ locals }) => {
-	if (locals.token) {
+	if (locals.user) {
 		throw redirect(302, '/');
 	}
 
