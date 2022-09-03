@@ -1,13 +1,12 @@
-import type { PageServerLoad } from './$types';
+import type { pageServerLoad } from './$types';
+
 import * as cookie from 'cookie';
 import { redirect } from '@sveltejs/kit';
 
-export const load: PageServerLoad = async (request) => {
+export const load: pageServerLoad = async ({locals}) => {
 	let authenticated = false;
 
-	const cookies = cookie.parse(request.request.headers.get('cookie') || '');
-
-	if (!request.locals.token || request.locals.token == '') {
+	if (!locals.token) {
 		authenticated = false;
 	} else {
 		authenticated = true;

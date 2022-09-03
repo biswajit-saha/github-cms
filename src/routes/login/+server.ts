@@ -6,10 +6,11 @@ const clientId = import.meta.env.VITE_CLIENT_ID;
 
 export const GET: RequestHandler = ({ locals }) => {
 	
-	if (locals.token) {
-		throw redirect(302, '/');
-	}
+	// if (locals.token) {
+	// 	throw redirect(302, '/');
+	// }
 
+	console.log('login', locals)
 	const sessionId = crypto.randomUUID();
 	return new Response('Redirect', {
 		status: 302,

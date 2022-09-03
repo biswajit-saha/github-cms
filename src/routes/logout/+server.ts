@@ -5,7 +5,7 @@ const target = 'https://github.com/login/oauth/authorize';
 const clientId = import.meta.env.VITE_CLIENT_ID;
 
 export const GET: RequestHandler = ({ locals }) => {
-	locals.token = '';
+	locals.token = ''
 	return new Response('Redirect', {
 		status: 302,
 		headers: {
