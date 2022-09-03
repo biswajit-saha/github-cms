@@ -1,22 +1,27 @@
-import { redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { CLIENT_ID } from '$env/static/private'
+import { redirect } from '@sveltejs/kit';
+import { CLIENT_ID } from '$env/static/private';
+import cookie from 'cookie';
 
-const target = 'https://github.com/login/oauth/authorize';
+const ghAuthURL = 'https://github.com/login/oauth/authorize';
 const clientId = CLIENT_ID;
 
 export const GET: RequestHandler = ({ locals }) => {
-	
-	// if (locals.token) {
-	// 	throw redirect(302, '/');
-	// }
+	if (locals.token) {
+		throw redirect(302, '/');
+	}
 
-	console.log('login', locals)
-	const sessionId = crypto.randomUUID();
-	return new Response('Redirect', {
+	const csrfState = crypto.randomUUID();
+	const csrfCookie = cookie.serialize('state', csrfState, {
+		maxAge: 24 * 60 * 60,
+		sameSite: true,
+		secure: process.env['ENVIRONMENT'] == 'production' ? true : false
+	});
+	return new Response(null, {
 		status: 302,
 		headers: {
-			Location: `${target}?client_id=${clientId}&state=${sessionId}&scope=repo`
+			'Set-Cookie': csrfCookie,
+			Location: `${ghAuthURL}?client_id=${clientId}&state=${csrfState}&scope=repo`
 		}
 	});
 };

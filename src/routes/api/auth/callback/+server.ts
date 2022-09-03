@@ -1,18 +1,52 @@
 import type { RequestHandler } from './$types';
-import * as cookie from 'cookie';
-import { redirect } from '@sveltejs/kit';
-import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private'
+import cookie from 'cookie';
+import { error, redirect } from '@sveltejs/kit';
+import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private';
+import { HttpProxy } from 'vite';
 
-const tokenUrl = 'https://github.com/login/oauth/access_token';
+const tokenURL = 'https://github.com/login/oauth/access_token';
+const userURL = 'https://api.github.com/user';
+
 const clientId = CLIENT_ID;
 const secret = CLIENT_SECRET;
 
-export const GET: RequestHandler = async function (request) {
-	// get code from the url
-	const code = request.url.searchParams.get('code');
+export const GET: RequestHandler = async function ({ url, request }) {
+	const code = url.searchParams.get('code') as string;
+	const state = url.searchParams.get('state') as string;
 
-	// get the access token
-	const token = await fetch(tokenUrl, {
+	// match csrf token
+	const csrfCookie = cookie.parse(request.headers.get('cookie') || '').state || '';
+
+	if (state !== csrfCookie) {
+		throw error(403, 'State mismatched.');
+	}
+
+	const token = await getAccessToken(code);
+	const user = await getUser(token);
+
+	const tokenCookie = cookie.serialize('token', token, {
+		path: '/',
+		httpOnly: true
+	});
+	const userCookie = cookie.serialize('user', user.login || '', {
+		path: '/',
+		httpOnly: true
+	});
+
+	const headers = new Headers();
+	headers.append('location', '/');
+	headers.append('set-cookie', tokenCookie);
+	headers.append('set-cookie', userCookie);
+
+	return new Response(null, {
+		status: 302,
+		headers
+	});
+};
+
+// function to get access token
+async function getAccessToken(code: string) {
+	const tokenResponse = await fetch(tokenURL, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json',
@@ -23,26 +57,18 @@ export const GET: RequestHandler = async function (request) {
 			client_secret: secret,
 			code
 		})
-	})
-		.then((res) => res.json())
-		.then((r) => {
-			console.log(r)
-			return r.access_token
-		});
+	});
+	const accessToken = await tokenResponse.json();
+	return accessToken.access_token;
+}
 
-	request.locals.token = token;
-	console.log('callback', request.locals.token)
-	const date = new Date(Date.now() + 86400e3)
-
-	return new Response('Redirect', {
-		status: 302,
+// Function to get user
+async function getUser(accessToken: string) {
+	const response = await fetch(userURL, {
 		headers: {
-			Location: '/',
-			// 'set-cookie': cookie.serialize('token', 'aaa' + request.locals.token, {
-			// 	path: '/',
-			// 	httpOnly: true,
-			// 	expires: date
-			// })
+			Accept: 'application/json',
+			Authorization: `Bearer ${accessToken}`
 		}
 	});
-};
+	return response.json();
+}
