@@ -18,7 +18,7 @@
             </ul>
         </div>
         <div class="sidebar-footer">
-            <a href="/logout"><button>Logout</button></a>
+            <a href="/api/auth/logout"><button>Logout</button></a>
         </div>
     </aside>
     <div class="page-container">

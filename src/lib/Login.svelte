@@ -1,7 +1,7 @@
 <div class="login-wrapper">
 	<div class="card login-card">
         <h1>Welcome to Git CMS</h1>
-        <a href="/login">
+        <a href="/api/auth/login">
             <button>Login Using Github</button>
         </a>
 	</div>

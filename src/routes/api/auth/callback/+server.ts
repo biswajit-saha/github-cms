@@ -1,10 +1,11 @@
 import type { RequestHandler } from './$types';
 import * as cookie from 'cookie';
 import { redirect } from '@sveltejs/kit';
+import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private'
 
 const tokenUrl = 'https://github.com/login/oauth/access_token';
-const clientId = import.meta.env.VITE_CLIENT_ID;
-const secret = import.meta.env.VITE_CLIENT_SECRET;
+const clientId = CLIENT_ID;
+const secret = CLIENT_SECRET;
 
 export const GET: RequestHandler = async function (request) {
 	// get code from the url

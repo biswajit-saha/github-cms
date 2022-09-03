@@ -1,8 +1,9 @@
 import { redirect } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
+import { CLIENT_ID } from '$env/static/private'
 
 const target = 'https://github.com/login/oauth/authorize';
-const clientId = import.meta.env.VITE_CLIENT_ID;
+const clientId = CLIENT_ID;
 
 export const GET: RequestHandler = ({ locals }) => {
 	
