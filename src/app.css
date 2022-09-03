@@ -1,34 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-:root {
-	font-family: 'Inter', Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--white: #ffffff;
-	--body-bg: #f5f5f9;
-	--gray-50: #eceff1;
-	--gray-100: #cfd8dc;
-	--gray-200: #b0bec5;
-	--gray-300: #90a4ae;
-	--gray-400: #78909c;
-	--gray-500: #607d8b;
-	--gray-600: #546e7a;
-	--gray-700: #455a64;
-	--gray-800: #37474f;
-	--gray-900: #263238;
-	--blue-50: #e3f2fd;
-	--blue-100: #bbdefb;
-	--blue-200: #90caf9;
-	--blue-300: #64b5f6;
-	--blue-400: #42a5f5;
-	--blue-500: #2196f3;
-	--blue-600: #1e88e5;
-	--blue-700: #1976d2;
-	--blue-800: #1565c0;
-	--blue-900: #0d47a1;
-	--size-small: 4px;
-	--size-medium: 8px;
-	--box-shadow: 0 2px 6px 0 rgb(67 89 113 / 12%);
+
+@layer base {
+	html {
+		font-family: 'Inter', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+			Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji',
+			'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+	}
 }
 body {
 	min-height: 100vh;
@@ -36,44 +15,12 @@ body {
 	font-size: 1rem;
 	background-color: var(--body-bg);
 }
-
 .btn {
 	@apply inline-flex font-medium leading-8 p-2 px-6  rounded-lg bg-gray-900 text-white;
 }
+.btn:hover {
+	@apply bg-gray-800;
+}
 .btn-full {
 	@apply block;
-}
-.btn-blue {
-	@apply bg-blue-500 text-white;
-}
-.btn-blue:hover {
-	@apply bg-blue-700;
-}
-
-button {
-	height: 40px;
-	line-height: 38px;
-	background-color: var(--blue-700);
-	color: var(--white);
-	border: 1px solid var(--blue-700);
-	padding: 0 1rem;
-	cursor: pointer;
-	font-size: 0.875rem;
-	border-radius: 4px;
-}
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-	font-weight: 500;
-	color: var(--gray-900);
-}
-
-.card {
-	background-color: var(--white);
-	box-shadow: var(--box-shadow);
-	border-radius: var(--size-medium);
-	padding: 1.5rem;
 }

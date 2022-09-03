@@ -6,7 +6,7 @@
 </script>
 
 {#if !data.authenticated}
-<Login />
+	<Login />
 {:else}
-<DashboardWrapper />
+	<DashboardWrapper />
 {/if}

@@ -1,9 +1,9 @@
 <div class="login-wrapper">
 	<div class="card login-card">
-        <h1>Welcome to Git CMS</h1>
-        <a href="/api/auth/login">
-            <button>Login Using Github</button>
-        </a>
+		<h1>Welcome to Git CMS</h1>
+		<a href="/api/auth/login">
+			<button>Login Using Github</button>
+		</a>
 	</div>
 </div>
 
@@ -17,10 +17,10 @@
 	.login-card {
 		max-width: 700px;
 		text-align: center;
-        border-radius: var(--size-medium);
-        padding: 2rem;
+		border-radius: var(--size-medium);
+		padding: 2rem;
 	}
-    h1 {
-        margin-top: 0;
-    }
+	h1 {
+		margin-top: 0;
+	}
 </style>
