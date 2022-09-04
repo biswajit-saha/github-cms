@@ -1,4 +1,4 @@
-<div class="flex min-h-screen items-center justify-center bg-gray-50 py-16 px-8">
+<div class="flex min-h-screen items-center justify-center py-16 px-8">
 	<div class="bg-white p-8 rounded-lg shadow w-full max-w-sm">
 		<div>
 			<img src="/logo-icon.svg" alt="Logo" class="mx-auto w-10 mb-8" />
