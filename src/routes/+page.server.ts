@@ -1,18 +1,9 @@
-import type { pageServerLoad } from './$types';
-
 import * as cookie from 'cookie';
 import { redirect } from '@sveltejs/kit';
+import type { PageServerLoad } from '.svelte-kit/types/src/routes/$types';
 
-export const load: pageServerLoad = async ({ locals }) => {
-	let authenticated = false;
-
-	if (!locals.token) {
-		authenticated = false;
-	} else {
-		authenticated = true;
+export const load: PageServerLoad = async ({ locals }) => {
+	if (!locals.user || locals.user === '') {
+		throw redirect(307, '/login');
 	}
-
-	return {
-		authenticated
-	};
 };

@@ -1,8 +1,7 @@
 import type { RequestHandler } from './$types';
 import cookie from 'cookie';
-import { error, redirect } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private';
-import { HttpProxy } from 'vite';
 
 const tokenURL = 'https://github.com/login/oauth/access_token';
 const userURL = 'https://api.github.com/user';

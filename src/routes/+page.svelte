@@ -5,8 +5,4 @@
 	export let data;
 </script>
 
-{#if !data.authenticated}
-	<Login />
-{:else}
-	<DashboardWrapper />
-{/if}
+<DashboardWrapper />

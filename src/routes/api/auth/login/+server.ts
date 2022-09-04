@@ -7,14 +7,14 @@ const ghAuthURL = 'https://github.com/login/oauth/authorize';
 const clientId = CLIENT_ID;
 
 export const GET: RequestHandler = ({ locals }) => {
-	if (locals.user) {
+	if (locals.user && locals.user !== '') {
 		throw redirect(302, '/');
 	}
 
 	const csrfState = crypto.randomUUID();
 	const csrfCookie = cookie.serialize('state', csrfState, {
 		maxAge: 24 * 60 * 60,
-		sameSite: true,
+		httpOnly: true,
 		secure: process.env['ENVIRONMENT'] == 'production' ? true : false
 	});
 	return new Response(null, {

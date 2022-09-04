@@ -1,7 +1,7 @@
+import type { PageServerLoad } from '.svelte-kit/types/src/routes/$types';
 import { redirect } from '@sveltejs/kit';
-import type { pageServerLoad } from './$types';
 
-export const load: pageServerLoad = async ({ locals }) => {
+export const load: PageServerLoad = async ({ locals }) => {
 	if (locals.user) {
 		throw redirect(302, '/');
 	}
