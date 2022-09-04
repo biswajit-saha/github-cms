@@ -14,8 +14,7 @@ export const GET: RequestHandler = ({ locals }) => {
 	const csrfState = crypto.randomUUID();
 	const csrfCookie = cookie.serialize('state', csrfState, {
 		maxAge: 24 * 60 * 60,
-		httpOnly: true,
-		secure: process.env['ENVIRONMENT'] == 'production' ? true : false
+		httpOnly: true
 	});
 	return new Response(null, {
 		status: 302,
