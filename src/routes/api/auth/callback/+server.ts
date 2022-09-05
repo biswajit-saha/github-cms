@@ -1,13 +1,13 @@
 import type { RequestHandler } from './$types';
 import cookie from 'cookie';
 import { error } from '@sveltejs/kit';
-import { CLIENT_ID, CLIENT_SECRET } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 
 const tokenURL = 'https://github.com/login/oauth/access_token';
 const userURL = 'https://api.github.com/user';
 
-const clientId = CLIENT_ID;
-const secret = CLIENT_SECRET;
+const clientId = env.CLIENT_ID;
+const secret = env.CLIENT_SECRET;
 
 export const GET: RequestHandler = async function ({ url, request }) {
 	const code = url.searchParams.get('code') as string;

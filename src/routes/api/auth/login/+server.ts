@@ -1,10 +1,10 @@
 import type { RequestHandler } from './$types';
 import { redirect } from '@sveltejs/kit';
-import { CLIENT_ID } from '$env/static/private';
+import { env } from '$env/dynamic/private';
 import cookie from 'cookie';
 
 const ghAuthURL = 'https://github.com/login/oauth/authorize';
-const clientId = CLIENT_ID;
+const clientId = env.CLIENT_ID;
 
 export const GET: RequestHandler = ({ locals }) => {
 	if (locals.user && locals.user !== '') {
