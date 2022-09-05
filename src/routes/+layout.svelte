@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>SvelteKit auth</title>
+	<title>Github CMS</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 	<link

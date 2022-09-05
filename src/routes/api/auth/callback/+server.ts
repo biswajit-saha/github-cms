@@ -22,12 +22,18 @@ export const GET: RequestHandler = async function ({ url, request }) {
 
 	const token = await getAccessToken(code);
 	const user = await getUser(token);
+	const { login, name, avatar_url } = user;
+	const userData = {
+		login,
+		name,
+		avatar_url
+	};
 
 	const tokenCookie = cookie.serialize('token', token, {
 		path: '/',
 		httpOnly: true
 	});
-	const userCookie = cookie.serialize('user', user.login || '', {
+	const userCookie = cookie.serialize('user', JSON.stringify(userData) || '', {
 		path: '/',
 		httpOnly: true
 	});
