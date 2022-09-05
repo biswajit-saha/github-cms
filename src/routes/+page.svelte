@@ -1,7 +1,13 @@
 <script>
-	import Login from '$lib/Login.svelte';
-	import DashboardWrapper from '$lib/dashboard/DashboardWrapper.svelte';
-	/** @type {import('./$types').PageData} */
+	import Collection from '$lib/components/Collection.svelte';
+	import ContentArea from '$lib/components/ContentArea.svelte';
+	import DashboardBase from '$lib/components/DashboardBase.svelte';
+	import Sidebar from '$lib/components/Sidebar.svelte';
 </script>
 
-<DashboardWrapper />
+<DashboardBase>
+	<Sidebar />
+	<ContentArea>
+		<Collection />
+	</ContentArea>
+</DashboardBase>
