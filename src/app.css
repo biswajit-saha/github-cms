@@ -18,9 +18,28 @@ body {
 .btn {
 	@apply inline-flex font-medium leading-8 p-2 px-6  rounded-lg bg-gray-900 text-white;
 }
+.btn-sm {
+	@apply text-sm p-2 px-4  rounded;
+}
 .btn:hover {
 	@apply bg-gray-800;
 }
 .btn-full {
-	@apply block;
+	@apply flex justify-center items-center;
+}
+.logo {
+	@apply max-h-10;
+}
+.menu-item a {
+	@apply flex hover:bg-blue-50 px-5 py-2 text-sm items-center;
+}
+.menu-item a svg {
+	@apply w-4 mr-2;
+}
+/* card */
+.card {
+	@apply bg-white mb-7 rounded shadow-sm p-4;
+}
+.collection-item {
+	/* @apply flex hover:bg-slate-100; */
 }
