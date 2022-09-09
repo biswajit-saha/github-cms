@@ -1,5 +1,5 @@
 <script lang="ts">
-	import '../app.css';
+	import '../../app.css';
 </script>
 
 <svelte:head>
@@ -11,5 +11,4 @@
 		rel="stylesheet"
 	/>
 </svelte:head>
-
 <slot />

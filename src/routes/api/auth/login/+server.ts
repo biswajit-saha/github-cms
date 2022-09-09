@@ -4,7 +4,7 @@ import { env } from '$env/dynamic/private';
 import cookie from 'cookie';
 
 const ghAuthURL = 'https://github.com/login/oauth/authorize';
-const clientId = env.CLIENT_ID;
+const clientId = env.GITHUB_CLIENT_ID;
 
 export const GET: RequestHandler = ({ locals }) => {
 	if (locals.user && locals.user !== '') {

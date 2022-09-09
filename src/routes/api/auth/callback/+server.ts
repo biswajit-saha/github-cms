@@ -6,8 +6,8 @@ import { env } from '$env/dynamic/private';
 const tokenURL = 'https://github.com/login/oauth/access_token';
 const userURL = 'https://api.github.com/user';
 
-const clientId = env.CLIENT_ID;
-const secret = env.CLIENT_SECRET;
+const clientId = env.GITHUB_CLIENT_ID;
+const secret = env.GITHUB_CLIENT_SECRET;
 
 export const GET: RequestHandler = async function ({ url, request }) {
 	const code = url.searchParams.get('code') as string;
