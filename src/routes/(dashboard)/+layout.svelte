@@ -2,8 +2,6 @@
 	import ContentArea from '$lib/components/ContentArea.svelte';
 	import DashboardBase from '$lib/components/DashboardBase.svelte';
 	import Sidebar from '$lib/components/Sidebar.svelte';
-
-	export let data;
 </script>
 
 <svelte:head>
@@ -17,7 +15,7 @@
 </svelte:head>
 
 <DashboardBase>
-	<Sidebar user={data.user} />
+	<Sidebar />
 	<ContentArea>
 		<slot />
 	</ContentArea>
