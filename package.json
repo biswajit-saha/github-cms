@@ -35,6 +35,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@tailwindcss/line-clamp": "^0.4.2"
+		"@tailwindcss/line-clamp": "^0.4.2",
+		"octokit": "^2.0.7"
 	}
 }
