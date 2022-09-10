@@ -14,7 +14,7 @@
 	<ul class="">
 		{#each menus as menu (menu.id)}
 			<li class="menu-item">
-				<a href={menu.url} class="current-item"
+				<a href="/{menu.url}" class="current-item"
 					><svg
 						xmlns="http://www.w3.org/2000/svg"
 						fill="none"

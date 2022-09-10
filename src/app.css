@@ -10,10 +10,7 @@
 	}
 }
 body {
-	min-height: 100vh;
-	margin: 0;
-	font-size: 1rem;
-	background-color: var(--body-bg);
+	@apply text-gray-900;
 }
 .btn {
 	@apply inline-flex font-medium leading-8 p-2 px-6  rounded-lg bg-gray-900 text-white;
