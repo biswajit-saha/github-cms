@@ -12,15 +12,15 @@
 	};
 
 	import { page } from '$app/stores';
-	import Collection from '$lib/components/Collection.svelte';
+	// import Collection from '$lib/components/Collection.svelte';
 	const { collections } = $page.data.config;
-	const { fields } = collections.find((el) => (el.id = 'post'));
+	const { fields } = collections.find((el) => el.id === 'page');
 	console.log(fields);
 
 	const mainFields = fields.filter((f) => f.placement !== 'sidebar');
 	const sidebarFields = fields.filter((f) => f.placement === 'sidebar');
-	console.log(mainFields);
-	console.log(sidebarFields);
+	// console.log(mainFields);
+	// console.log(sidebarFields);
 </script>
 
 <!-- breadcrumb for single page -->
