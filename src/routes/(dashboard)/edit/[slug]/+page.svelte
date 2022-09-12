@@ -14,7 +14,7 @@
 	import { page } from '$app/stores';
 	// import Collection from '$lib/components/Collection.svelte';
 	const { collections } = $page.data.config;
-	const { fields } = collections.find((el) => el.id === 'page');
+	const { fields } = collections.find((el) => el.id === 'post');
 	console.log(fields);
 
 	const mainFields = fields.filter((f) => f.placement !== 'sidebar');
@@ -40,12 +40,13 @@
 			<hr />
 		</div>
 	</div>
-	<div class="content-area-sidebar w-full lg:w-1/3 px-4">
-		<div class="card">
-			{#each sidebarFields as field}
-				<svelte:component this={componentList[field.widget]} {...field} />
-			{/each}
-			<!-- <String
+	{#if sidebarFields.length}
+		<div class="content-area-sidebar w-full lg:w-1/3 px-4">
+			<div class="card">
+				{#each sidebarFields as field}
+					<svelte:component this={componentList[field.widget]} {...field} />
+				{/each}
+				<!-- <String
 				id="sidebar_title"
 				name="hello"
 				label="Title"
@@ -59,6 +60,7 @@
 				required={true}
 				hint="Placeat saepe voluptas optio fugiat ipsum maiores nisi at, iusto maxime soluta aperiam beatae."
 			/> -->
+			</div>
 		</div>
-	</div>
+	{/if}
 </div>
