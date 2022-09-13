@@ -12,6 +12,7 @@
 	};
 
 	import { page } from '$app/stores';
+	import Boolean from '$lib/components/widgets/Boolean.svelte';
 	// import Collection from '$lib/components/Collection.svelte';
 	const { collections } = $page.data.config;
 	const { fields } = collections.find((el) => el.id === 'post');
@@ -37,7 +38,11 @@
 			{#each mainFields as field}
 				<svelte:component this={componentList[field.widget]} {...field} />
 			{/each}
-			<hr />
+			<Boolean
+				id="boolian_id"
+				label="A very long label text for testing purpose"
+				hint="Lorem, ipsum dolor sit amet consectetur adipisicing elit. Assumenda quae."
+			/>
 		</div>
 	</div>
 	{#if sidebarFields.length}
