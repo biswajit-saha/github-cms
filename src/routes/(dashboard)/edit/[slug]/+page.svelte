@@ -2,6 +2,8 @@
 	import String from '$lib/components/widgets/String.svelte';
 	import Text from '$lib/components/widgets/Text.svelte';
 	import Date from '$lib/components/widgets/Date.svelte';
+	import Boolean from '$lib/components/widgets/Boolean.svelte';
+	import Separator from '$lib/components/widgets/Separator.svelte';
 	import Markdown from '$lib/components/widgets/Markdown.svelte';
 
 	const componentList: { [key: string]: unknown } = {
@@ -12,11 +14,9 @@
 	};
 
 	import { page } from '$app/stores';
-	import Boolean from '$lib/components/widgets/Boolean.svelte';
 	// import Collection from '$lib/components/Collection.svelte';
 	const { collections } = $page.data.config;
 	const { fields } = collections.find((el) => el.id === 'post');
-	console.log(fields);
 
 	const mainFields = fields.filter((f) => f.placement !== 'sidebar');
 	const sidebarFields = fields.filter((f) => f.placement === 'sidebar');
@@ -38,6 +38,7 @@
 			{#each mainFields as field}
 				<svelte:component this={componentList[field.widget]} {...field} />
 			{/each}
+			<Separator />
 			<Boolean
 				id="boolian_id"
 				label="A very long label text for testing purpose"
@@ -51,6 +52,7 @@
 				{#each sidebarFields as field}
 					<svelte:component this={componentList[field.widget]} {...field} />
 				{/each}
+				<Separator />
 				<!-- <String
 				id="sidebar_title"
 				name="hello"
